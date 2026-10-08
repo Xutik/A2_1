@@ -10,7 +10,7 @@ function addTodo() {
     const text = todoInput.value.trim();
 
     if (text === '') {
-        errorMessage.textContent = 'Fill in input';
+        errorMessage.textContent = 'Input must not be empty';
         return;
     }
 
@@ -19,22 +19,26 @@ function addTodo() {
     const todo = {
         id: Date.now(),
         text: text,
-        completed: false
+        completed: false,
     };
 
     todos.push(todo);
-    renderTodos();
     todoInput.value = '';
+    todoInput.focus();
+    renderTodos();
 }
 
 function renderTodos() {
 
     todosList.innerHTML = '';
 
-    sortedTodos.forEach(todo => {
+    todos.forEach(todo => {
         const li = document.createElement('li');
         if (todo.completed) {
             li.classList.add('completed');
+        }
+        if (todo.gray) {
+            li.classList.add('gray-task');
         }
 
         const textSpan = document.createElement('span');
@@ -43,12 +47,13 @@ function renderTodos() {
 
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete-btn');
-        deleteBtn.innerHTML = '<img src="image.png" alt="Delete">';
-
+        deleteBtn.textContent = "🗑";
+        
         li.addEventListener('click', (e) => {
-            if (e.target !== deleteBtn && e.target.parentNode !== deleteBtn) {
-                toggleCompleted(todo.id);
+            if (e.target.closest('.delete-btn')) {
+                return;
             }
+            changeTaskState(todo.id);
         });
 
         deleteBtn.addEventListener('click', (e) => {
@@ -63,13 +68,16 @@ function renderTodos() {
 
     updateCounter();
 }
+function changeTaskState(id) {
+    const todo = todos.find((task) => task.id === id);
 
-function toggleCompleted(id) {
-    const todo = todos.find(t => t.id === id);
-    if (todo) {
-        todo.completed = !todo.completed;
-        renderTodos();
+    if (!todo) {
+        return;
     }
+
+    todo.completed = !todo.completed;
+
+    renderTodos();
 }
 
 function deleteTodo(id) {
@@ -79,7 +87,6 @@ function deleteTodo(id) {
 
 function updateCounter() {
     const completed = todos.filter(t => t.completed).length;
-    const total = todos.length;
     completedCountSpan.textContent = `${completed} completed`;
 }
 

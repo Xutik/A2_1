@@ -1,27 +1,17 @@
-### Inlämningsuppgift
-Skapa en webbapplikation för ToDo som innehåller HTML, CSS och JavaScript uppdelade i separata filer.
+Uppgiften är att via GitHub lämna in en version av ToDo-listan som påbörjades i förra kursen, men med utseende och animationer enligt den bifogade videofilen.
 
-Detta är en uppgift som förbereder dig till nästa kurs.
+Kravspecifikation
 
-I din webbapplikation ska man kunna göra följande:
+Todo-appen ska ha styling som motsvarar det som visas i den bifogade videon, avseende färger, mått, typografi, etc.
+När man kommer in på sidan ska hela sidan animeras enligt videofilen: flyga ner uppifrån och fade in
+När man lägger till nya punkter i listan genom att skriva in dem och klicka på OK ska de animeras in enligt videofilen: fade-in och glidning uppåt
+När man klickar på en punkt för att markera den som klar ska den animeras enligt videofilen: Fade till grå
+Om man försöker lägga till en tom punkt ska felmeddelandet animeras enligt videofilen: Blinka rött
+Precis som i föregående uppgift ska det också vara möjligt att radera en punkt i listan, och en synlig räknare ska öka varje gång man markerar en punkt som klar.
 
-Skriva in en uppgift i ett <input>-fält
-Klicka på en knapp för att lägga till uppgiften i en lista som en <li>
-Om man klickar på knappen när fältet är tomt ska man få ett meddelande som säger att man måste skriva något.
-Klicka på en uppgift <li> i listan för att markera den som klar (sätta class så att den stylas annorlunda)
-Uppdatera en liten etikett någonstans med antal uppgifter som man gjort klart.
+Inlämning
 
-Uppgifterna som syns i HTML ska även lagras i en array med objekt i JavaScript.
+Lämna in genom att pusha till ett publikt repository på GitHub. Publicera också med hjälp av GitHub pages. Skicka in två länkar via ItsLearning:
 
-Uppgiften ska redovisas som en länk till ett repo på GitHub.
-
-För G ska samtliga ovan punkter uppfyllas med en fungerande webbapplikation.
-
-För VG ska förutom G-kraven följande uppfyllas:
-
-Klicka på en <li> som markerats som färdig igen för att markera den som ofärdig (kräver conditionals)
-Klicka på en liten papperskorg på varje rad för att radera den uppgiften ur listan.
-
-Uppgifterna som syns i HTML ska vara i synk med en array med objekt i JavaScript, dvs status om klar/inte klar samt att tas bort från array när den tas bort ur listan.
-
-Webbapplikationen ska publiceras på GitHub pages.
+Länk till GitHub-repot
+Länk till GitHub Pages
