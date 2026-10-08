@@ -1,7 +1,6 @@
 let todos = [];
 
 const todoInput = document.getElementById('todo-input');
-const prioritySelect = document.getElementById('todo-priority');
 const addTodoBtn = document.getElementById('add-todo-btn');
 const todosList = document.getElementById('todos-list');
 const errorMessage = document.getElementById('error-message');
@@ -9,7 +8,6 @@ const completedCountSpan = document.getElementById('completed-count');
 
 function addTodo() {
     const text = todoInput.value.trim();
-    const priority = prioritySelect.value;
 
     if (text === '') {
         errorMessage.textContent = 'Fill in input';
@@ -21,7 +19,6 @@ function addTodo() {
     const todo = {
         id: Date.now(),
         text: text,
-        priority: priority,
         completed: false
     };
 
@@ -34,9 +31,6 @@ function renderTodos() {
 
     todosList.innerHTML = '';
 
-    const priorityOrder = { high: 0, medium: 1, low: 2 };
-    const sortedTodos = [...todos].sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
-
     sortedTodos.forEach(todo => {
         const li = document.createElement('li');
         if (todo.completed) {
@@ -46,10 +40,6 @@ function renderTodos() {
         const textSpan = document.createElement('span');
         textSpan.classList.add('todo-text');
         textSpan.textContent = todo.text;
-
-        const priorityBadge = document.createElement('span');
-        priorityBadge.classList.add('priority-badge', `priority-${todo.priority}`);
-        priorityBadge.textContent = todo.priority;
 
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete-btn');
@@ -67,7 +57,6 @@ function renderTodos() {
         });
 
         li.appendChild(textSpan);
-        li.appendChild(priorityBadge);
         li.appendChild(deleteBtn);
         todosList.appendChild(li);
     });
@@ -91,7 +80,7 @@ function deleteTodo(id) {
 function updateCounter() {
     const completed = todos.filter(t => t.completed).length;
     const total = todos.length;
-    completedCountSpan.textContent = `Completed ${completed} out of ${total}`;
+    completedCountSpan.textContent = `${completed} completed`;
 }
 
 addTodoBtn.addEventListener('click', addTodo);

@@ -8,24 +8,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Todo List</h1>
-        
-        <div class="add-todo-section">
-            <h3>New Todo</h3>
-            <input type="text" id="todo-input" placeholder="Type your task" required>
-            <select id="todo-priority">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-            <button id="add-todo-btn">Add Todo</button>
-            <p id="error-message" class="error-message"></p>
-        </div>
-
+        <h1>My ToDo</h1>
         <div class="stats">
             <span id="completed-count"></span>
         </div>
-
+        <div class="add-todo-section">
+            <input type="text" id="todo-input" required>
+            <button id="add-todo-btn">OK</button>
+            <p id="error-message" class="error-message"></p>
+        </div>
         <ul id="todos-list">
         </ul>
     </div>
