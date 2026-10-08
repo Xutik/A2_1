@@ -20,6 +20,7 @@ function addTodo() {
         id: Date.now(),
         text: text,
         completed: false,
+        twicecompleted: false
     };
 
     todos.push(todo);
@@ -37,8 +38,8 @@ function renderTodos() {
         if (todo.completed) {
             li.classList.add('completed');
         }
-        if (todo.gray) {
-            li.classList.add('gray-task');
+        if (todo.twiceCompleted) {
+            li.classList.add('twice-completed');
         }
 
         const textSpan = document.createElement('span');
@@ -48,7 +49,7 @@ function renderTodos() {
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete-btn');
         deleteBtn.textContent = "🗑";
-        
+
         li.addEventListener('click', (e) => {
             if (e.target.closest('.delete-btn')) {
                 return;
@@ -75,8 +76,16 @@ function changeTaskState(id) {
         return;
     }
 
-    todo.completed = !todo.completed;
+    if (!todo.completed) {
+        todo.completed = true;
+        todo.twiceCompleted = false;
 
+    } else if (!todo.twiceCompleted) {
+        todo.twiceCompleted = true;
+    } else {
+        todo.completed = false;
+        todo.twiceCompleted = false;
+    }
     renderTodos();
 }
 

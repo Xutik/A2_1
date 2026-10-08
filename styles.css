@@ -82,7 +82,7 @@ h1 {
     color:rgb(14, 14, 14);
 }
 
-#todos-list {
+.todos-list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -91,6 +91,7 @@ h1 {
 #todos-list li {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
     gap: 10px;
     margin-bottom: 10px;
@@ -105,6 +106,7 @@ h1 {
 
 #todos-list li.completed.twice-completed {
     color: rgb(209, 209, 209);
+    text-decoration: line-through;
 }
 
 .delete-btn {
