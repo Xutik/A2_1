@@ -24,6 +24,25 @@ body {
     padding: 30px;
     background-color: white;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    animation: float-in 1.5s ease-out forwards;
+}
+
+@keyframes float-in {
+    0% {
+        transform: translateY(-100vh);
+    }
+
+    50% {
+        transform: translateY(30px);
+    }
+
+    75% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 h1 {
